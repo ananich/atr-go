@@ -1,5 +1,5 @@
-module example/hello
+module ananich/atr-go
 
-go 1.15
+go 1.20
 
 require github.com/shopspring/decimal v1.3.1
