@@ -1,6 +1,6 @@
 # ATR indicator calculation example
 
-Here is an example of calculation of average true range indicator using GO lang.
+Here is an example of calculation of Average True Range indicator using GO lang.
 
 It reads input data from the file specified in the first command line parameter.
 The file has to be in CSV format. Historical data from Yahoo! Finance can be
@@ -17,6 +17,7 @@ calculated ATR indicator.
  * Computational complexity: linear
  * Memory complexity: const
 
-![Test1](https://raw.githubusercontent.com/ananich/atr-go/main/Test1.png)
+For verification of the calculated indicator there is a [Tableau book](https://public.tableau.com/app/profile/anthony.ananich/viz/ATR_16786094723270/Dashboard1).
 
+![Test1](https://raw.githubusercontent.com/ananich/atr-go/main/Test1.png)
 
