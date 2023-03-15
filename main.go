@@ -6,9 +6,14 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"math"
 	"os"
 	"strconv"
 )
+
+func p(x float64) string {
+	return fmt.Sprintf("%.2f", math.Round(x*100)/100)
+}
 
 func main() {
 	filePath := "test/testdata/AAPL.csv"
@@ -26,7 +31,7 @@ func main() {
 	headers, _ := csvReader.Read() // skip header line
 
 	csvWriter := csv.NewWriter(os.Stdout)
-	csvWriter.Write(append(headers, "ATR"))
+	csvWriter.Write(append(headers[:5], "Volume", "ATR"))
 	defer csvWriter.Flush()
 
 	atr := indicators.NewATR(14)
@@ -40,6 +45,7 @@ func main() {
 		}
 
 		// date := record[0]
+		t := record[0]
 		o, _ := strconv.ParseFloat(record[1], 32)
 		h, _ := strconv.ParseFloat(record[2], 32)
 		l, _ := strconv.ParseFloat(record[3], 32)
@@ -48,7 +54,7 @@ func main() {
 
 		atr.Update(o, h, l, c, v)
 
-		record = append(record, fmt.Sprintf("%.2f", atr.Value()))
-		csvWriter.Write(record)
+		line := []string{t, p(o), p(h), p(l), p(c), fmt.Sprintf("%d", v), p(atr.Value())}
+		csvWriter.Write(line)
 	}
 }
