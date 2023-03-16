@@ -16,9 +16,9 @@ func p(x float64) string {
 }
 
 func main() {
-	filePath := "test/testdata/AAPL.csv"
+	filePath := "AAPL.csv"
 	if len(os.Args) > 1 {
-		filePath = os.Args[1]
+		filePath = "test/testdata/" + os.Args[1] + ".csv"
 	}
 
 	f, err := os.Open(filePath)

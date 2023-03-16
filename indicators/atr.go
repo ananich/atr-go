@@ -5,6 +5,7 @@ import (
 )
 
 // Average True Range
+// https://www.investopedia.com/terms/a/atr.asp
 type ATR struct {
 	n   float64
 	i   float64

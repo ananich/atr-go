@@ -4,6 +4,8 @@ import (
 	"math"
 )
 
+// Moving Average Convergence Divergence
+// https://www.investopedia.com/ask/answers/122414/what-moving-average-convergence-divergence-macd-formula-and-how-it-calculated.asp
 type MACD struct {
 	fma       EMA
 	sma       EMA
@@ -23,10 +25,10 @@ func NewMACD(fast int, slow int, smoothing int) *MACD {
 }
 
 func (x *MACD) Update(o, h, l, c float64, v int64) {
-	x.fma.UpdateImpl(c)
-	x.sma.UpdateImpl(c)
+	x.fma.update(c)
+	x.sma.update(c)
 	x.macd = x.fma.ema - x.sma.ema
-	x.signal.UpdateImpl(x.macd)
+	x.signal.update(x.macd)
 	x.histogram = x.macd - x.signal.ema
 }
 
