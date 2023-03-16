@@ -34,7 +34,7 @@ func main() {
 	csvWriter.Write(append(headers[:5], "Volume", "ATR"))
 	defer csvWriter.Flush()
 
-	atr := indicators.NewATR(14)
+	atr := indicators.NewDMI(14)
 
 	for {
 		record, err := csvReader.Read()
@@ -54,7 +54,9 @@ func main() {
 
 		atr.Update(o, h, l, c, v)
 
-		line := []string{t, p(o), p(h), p(l), p(c), fmt.Sprintf("%d", v), p(atr.Value())}
+		//line := []string{t, p(o), p(h), p(l), p(c), fmt.Sprintf("%d", v), p(atr.Value())}
+		pDI, mDI, adx := atr.Value()
+		line := []string{t, p(o), p(h), p(l), p(c), fmt.Sprintf("%d", v), p(pDI), p(mDI), p(adx)}
 		csvWriter.Write(line)
 	}
 }
