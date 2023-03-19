@@ -19,15 +19,18 @@ func NewEMA(len int) *EMA {
 	return ema
 }
 
-func (x *EMA) update(c float64) {
-	// exponential moving average calculation
+func (x *EMA) calculate(c float64) float64 {
 	if math.IsNaN(x.ema) {
-		x.ema = c
+		return c
 	} else {
 		n := math.Min(x.i, x.n)
 		k := smoothing / (n + 1)
-		x.ema = x.ema*(1-k) + c*k
+		return x.ema*(1-k) + c*k
 	}
+}
+
+func (x *EMA) update(c float64) {
+	x.ema = x.calculate(c)
 	x.i++
 }
 
