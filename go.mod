@@ -1,4 +1,3 @@
-module ananich/atr-go
+module github.com/ananich/indicators
 
 go 1.20
-
