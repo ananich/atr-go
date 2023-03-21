@@ -19,5 +19,5 @@ calculated ATR indicator.
 
 For verification of the calculated indicator there is a [Tableau book](https://public.tableau.com/app/profile/anthony.ananich/viz/ATR_16786094723270/Dashboard1).
 
-![Test1](https://raw.githubusercontent.com/ananich/atr-go/main/Test1.png)
+![Test1](https://raw.githubusercontent.com/ananich/indicators/main/docs/Test1.png)
 

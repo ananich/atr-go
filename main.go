@@ -1,7 +1,6 @@
 package main
 
 import (
-	"ananich/atr-go/indicators"
 	"encoding/csv"
 	"fmt"
 	"io"
@@ -9,6 +8,8 @@ import (
 	"math"
 	"os"
 	"strconv"
+
+	"github.com/ananich/indicators/indicators"
 )
 
 func p(x float64) string {
@@ -34,7 +35,7 @@ func main() {
 	csvWriter.Write(append(headers[:5], "Volume", "ATR"))
 	defer csvWriter.Flush()
 
-	atr := indicators.NewDMI(14)
+	atr := indicators.NewATR(14)
 
 	for {
 		record, err := csvReader.Read()
@@ -44,7 +45,6 @@ func main() {
 			log.Fatal("Unable to parse CSV file "+filePath, err)
 		}
 
-		// date := record[0]
 		t := record[0]
 		o, _ := strconv.ParseFloat(record[1], 32)
 		h, _ := strconv.ParseFloat(record[2], 32)
@@ -54,9 +54,7 @@ func main() {
 
 		atr.Update(o, h, l, c, v)
 
-		//line := []string{t, p(o), p(h), p(l), p(c), fmt.Sprintf("%d", v), p(atr.Value())}
-		pDI, mDI, adx := atr.Value()
-		line := []string{t, p(o), p(h), p(l), p(c), fmt.Sprintf("%d", v), p(pDI), p(mDI), p(adx)}
+		line := []string{t, p(o), p(h), p(l), p(c), fmt.Sprintf("%d", v), p(atr.Value())}
 		csvWriter.Write(line)
 	}
 }
