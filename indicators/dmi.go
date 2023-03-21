@@ -26,7 +26,7 @@ func NewDMI(len int) *DMI {
 		0,
 		math.NaN(),
 		math.NaN(),
-		ATR{float64(len), 0, math.NaN(), math.NaN()},
+		ATR{float64(len), 0, TR{math.NaN(), math.NaN()}, math.NaN()},
 		0,
 		0,
 		math.NaN(),
