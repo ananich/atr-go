@@ -5,8 +5,8 @@ import (
 )
 
 type TR struct {
-	c   float64
-	tr  float64
+	c  float64
+	tr float64
 }
 
 type MaxTR struct {
@@ -45,13 +45,12 @@ func (x *TR) Update(o, h, l, c float64, v int64) {
 }
 
 func (x *MaxTR) Update(o, h, l, c float64, v int64) {
-	m := x.max
-	x.tr.Update(o,h,l,c,v)
-	x.max = math.Max(m, x.max)
+	x.tr.Update(o, h, l, c, v)
+	x.max = math.Max(x.max, x.tr.tr)
 }
 
 func (x *ATR) Update(o, h, l, c float64, v int64) {
-	x.tr.Update(o,h,l,c,v)
+	x.tr.Update(o, h, l, c, v)
 
 	// average true range calculation
 	if math.IsNaN(x.atr) {
@@ -63,10 +62,10 @@ func (x *ATR) Update(o, h, l, c float64, v int64) {
 	x.i++
 }
 
-func (x *ATR) Value() float64 {
-	return x.atr
-}
-
 func (x *MaxTR) Value() float64 {
 	return x.max
+}
+
+func (x *ATR) Value() float64 {
+	return x.atr
 }
