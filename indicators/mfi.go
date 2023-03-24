@@ -35,6 +35,7 @@ func (x *MFI) Update(o, h, l, c float64, v int64) {
 		mr := x.pmf / x.nmf // money ratio
 		x.mfi = 100 - 100/(1+mr)
 	}
+	x.tp = tp
 	x.i++
 }
 
