@@ -14,7 +14,7 @@ type RSI struct {
 }
 
 func NewRSI(len int) *RSI {
-	rsi := &RSI{float64(len), 0, math.NaN(), 0, 0, 0.5}
+	rsi := &RSI{float64(len), 0, math.NaN(), 0, 0, 50.0}
 	return rsi
 }
 
