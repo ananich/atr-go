@@ -14,6 +14,7 @@ type MACD struct {
 	histogram float64
 }
 
+// Typically 12, 26, 9 for daily charts or 5, 35, 5 for weekly charts
 func NewMACD(fast int, slow int, smoothing int) *MACD {
 	result := &MACD{
 		EMA{float64(fast), 0, math.NaN()},
