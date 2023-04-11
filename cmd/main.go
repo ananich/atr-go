@@ -9,7 +9,7 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/ananich/indicators/indicators"
+	"github.com/ananich/indicators"
 )
 
 func p(x float64) string {
