@@ -8,7 +8,7 @@ used for testing purposes. By default output is printed to STDOUT which may
 be redirected to a file:
 
 ```
-go run . AAPL.csv > AAPL+ATR.csv
+go run ./cmd/main.go AAPL.csv > AAPL+ATR.csv
 ```
 
 Output contains data in CSV format similar to input plus additional column with
